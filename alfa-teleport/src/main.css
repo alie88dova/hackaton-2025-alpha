@@ -1,0 +1,449 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  line-height: 1.5;
+  color: #0f172a;
+  background: radial-gradient(circle at top, #fee2e2 0, #f8fafc 45%, #e5e7eb 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 32px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    to right,
+    rgba(248, 250, 252, 0.95),
+    rgba(254, 242, 242, 0.96)
+  );
+}
+
+.app-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.app-title-main {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.app-title-sub {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* MAIN LAYOUT */
+
+.app-main {
+  padding: 24px 32px 16px;
+  flex: 1;
+}
+
+.app-layout {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+  gap: 20px;
+}
+
+@media (max-width: 960px) {
+  .app-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* PANELS */
+
+.panel {
+  border-radius: 20px;
+  padding: 20px 22px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 60px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transform: translateY(5px);
+  animation: panel-enter 0.5s ease-out forwards;
+}
+
+.panel--primary {
+  background: radial-gradient(circle at top left, #fee2e2, #ffffff 55%);
+}
+
+.panel--secondary {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+@keyframes panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.panel__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.panel__subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 16px;
+}
+
+.panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.panel__pill {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* FORM */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form__label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #374151;
+  gap: 4px;
+}
+
+.form__input {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 10px 14px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.12s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form__input:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.4),
+    0 10px 25px rgba(248, 113, 113, 0.2);
+  transform: translateY(-1px);
+}
+
+.form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.form__hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.form__error {
+  border-radius: 10px;
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+.form__error--inline {
+  background: none;
+  padding: 0;
+}
+
+/* BUTTONS */
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 9px 16px;
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 14px 30px rgba(248, 113, 113, 0.35);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    filter 0.12s ease, opacity 0.12s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(220, 38, 38, 0.45);
+  filter: brightness(1.05);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 8px 18px rgba(220, 38, 38, 0.35);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow: none;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: #ef4444;
+  box-shadow: none;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+}
+
+.btn--ghost:hover {
+  background: rgba(254, 242, 242, 0.9);
+  box-shadow: 0 8px 18px rgba(248, 113, 113, 0.25);
+}
+
+/* OFFERS */
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 960px) {
+  .offers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.offer-card {
+  position: relative;
+  border-radius: 18px;
+  padding: 16px 16px 12px;
+  background: linear-gradient(135deg, #ffffff, #f9fafb);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.16s ease, box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.offer-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(248, 113, 113, 0.08),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.offer-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2);
+  border-color: rgba(248, 113, 113, 0.6);
+}
+
+.offer-card:hover::before {
+  opacity: 1;
+}
+
+.offer-card--enter {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: card-enter 0.35s ease-out forwards;
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.offer-card__header {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.offer-card__badge {
+  font-size: 11px;
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.offer-card__badge--refinance {
+  background: rgba(248, 113, 113, 0.12);
+  color: #b91c1c;
+}
+
+.offer-card__badge--investment {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+}
+
+.offer-card__badge--highlight {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+}
+
+.offer-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 2px;
+}
+
+.offer-card__subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 0 8px;
+}
+
+.offer-card__description {
+  font-size: 13px;
+  color: #4b5563;
+  margin: 0 0 10px;
+}
+
+.offer-card__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.offer-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.offer-card__info-label {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.offer-card__info-value {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.offer-card__info-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 11px;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.offer-card__footer {
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* SKELETON */
+
+.offer-skeleton {
+  border-radius: 18px;
+  height: 180px;
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 0%,
+    #f3f4f6 30%,
+    #e5e7eb 60%
+  );
+  background-size: 200% 100%;
+  animation: skeleton 1.2s ease-in-out infinite;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* TEXT HELPERS */
+
+.muted {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* FOOTER */
+
+.app-footer {
+  padding: 10px 24px 16px;
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+}
