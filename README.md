@@ -18,3 +18,9 @@ our-project/
  -- docker-compose up
 ```
 Приложение будет доступно на локал хосте на 80 порту.
+
+КОМАНДА IMPORT LUCK
+
+Data-science -
+Backend -
+Frontend -
