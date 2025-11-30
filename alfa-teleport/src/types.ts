@@ -1,8 +1,10 @@
-export type OfferKind = 'refinance' | 'investment';
-
 export interface Offer {
   id: string;
-  kind: OfferKind;
+  /**
+   * Тип продукта, прилетает с бэка как текст:
+   * "Рефинансирование", "Бизнес", "Кредитная карта", "Кредит наличными" и т.д.
+   */
+  kind: string;
   title: string;
   subtitle: string;
   description: string;
@@ -11,10 +13,18 @@ export interface Offer {
   amountFrom?: number;  // сумма от
   amountTo?: number;    // сумма до
   riskLevel?: 'low' | 'medium' | 'high';
-  highlight?: string;   // короткий selling point
+  highlight?: string;
+}
+
+export interface ClientInfo {
+  age: number;
+  region: string;
+  officialSalary?: number | null;
 }
 
 export interface OffersResponse {
   clientId: string;
   offers: Offer[];
+  predictedIncome?: number;
+  clientInfo?: ClientInfo;
 }

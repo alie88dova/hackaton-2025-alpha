@@ -5,11 +5,6 @@ interface OfferCardProps {
   index: number;
 }
 
-const kindLabel: Record<Offer['kind'], string> = {
-  refinance: 'Рефинансирование',
-  investment: 'Инвестиции',
-};
-
 const riskLabel: Record<NonNullable<Offer['riskLevel']>, string> = {
   low: 'Низкий риск',
   medium: 'Умеренный риск',
@@ -17,7 +12,7 @@ const riskLabel: Record<NonNullable<Offer['riskLevel']>, string> = {
 };
 
 export function OfferCard({ offer, index }: OfferCardProps) {
-  const delay = index * 80; // небольшая задержка для "каскада"
+  const delay = index * 80;
 
   return (
     <article
@@ -25,8 +20,8 @@ export function OfferCard({ offer, index }: OfferCardProps) {
       style={{ animationDelay: `${delay}ms` }}
     >
       <header className="offer-card__header">
-        <span className={`offer-card__badge offer-card__badge--${offer.kind}`}>
-          {kindLabel[offer.kind]}
+        <span className="offer-card__badge">
+          {offer.kind}
         </span>
         {offer.highlight && (
           <span className="offer-card__badge offer-card__badge--highlight">
@@ -41,7 +36,7 @@ export function OfferCard({ offer, index }: OfferCardProps) {
       <p className="offer-card__description">{offer.description}</p>
 
       <div className="offer-card__grid">
-        {offer.rate && (
+        {offer.rate !== undefined && (
           <div className="offer-card__info">
             <span className="offer-card__info-label">Ставка от</span>
             <span className="offer-card__info-value">
@@ -50,7 +45,7 @@ export function OfferCard({ offer, index }: OfferCardProps) {
           </div>
         )}
 
-        {offer.termMonths && (
+        {offer.termMonths !== undefined && (
           <div className="offer-card__info">
             <span className="offer-card__info-label">Срок до</span>
             <span className="offer-card__info-value">
@@ -59,21 +54,29 @@ export function OfferCard({ offer, index }: OfferCardProps) {
           </div>
         )}
 
-        {(offer.amountFrom || offer.amountTo) && (
+        {(offer.amountFrom !== undefined || offer.amountTo !== undefined) && (
           <div className="offer-card__info">
             <span className="offer-card__info-label">Сумма</span>
             <span className="offer-card__info-value">
-              {offer.amountFrom
+              {offer.amountFrom !== undefined
                 ? `от ${offer.amountFrom.toLocaleString('ru-RU')} ₽`
                 : ''}
-              {offer.amountTo
+              {offer.amountTo !== undefined
                 ? ` до ${offer.amountTo.toLocaleString('ru-RU')} ₽`
                 : ''}
             </span>
           </div>
         )}
-      </div>
 
+        {offer.riskLevel && (
+          <div className="offer-card__info">
+            <span className="offer-card__info-label">Профиль риска</span>
+            <span className="offer-card__info-chip">
+              {riskLabel[offer.riskLevel]}
+            </span>
+          </div>
+        )}
+      </div>
     </article>
   );
 }

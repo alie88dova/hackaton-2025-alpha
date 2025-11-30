@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  frontend:
+      build: ./alfa-teleport
+      ports:
+        - "3000:80"
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+    - PYTHONUNBUFFERED=1
+    - ENV=production
+
+  
