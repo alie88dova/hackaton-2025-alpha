@@ -1,6 +1,6 @@
 import type { Offer, OffersResponse, ClientInfo } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL as string | undefined;
+const API_BASE_URL = "http://localhost:8000";
 
 // если нет урла бэка — включаем моки
 const USE_MOCKS = !API_BASE_URL;
@@ -138,7 +138,7 @@ export async function fetchOffers(clientId: string): Promise<OffersResponse> {
   }
 
   // если указан адрес бэка — используем ТОЛЬКО его
-  if (API_BASE_URL && !USE_MOCKS) {
+  if (API_BASE_URL) {
     const base = API_BASE_URL.replace(/\/$/, '');
     const url = `${base}/api/predict/${encodeURIComponent(clientId)}`;
 
@@ -170,5 +170,5 @@ export async function fetchOffers(clientId: string): Promise<OffersResponse> {
   }
 
   // иначе — моки (локальный режим)
-  return fetchOffersMock(clientId);
+  //return fetchOffersMock(clientId);
 }
