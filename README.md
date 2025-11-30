@@ -20,7 +20,8 @@ our-project/
 Приложение будет доступно на локал хосте на 80 порту.
 
 КОМАНДА IMPORT LUCK
-
-Data-science -
-Backend -
-Frontend -
+```
+Data-science - shikizhanr
+Backend - alie88dova Ivan
+Frontend - dnm-emu
+```
