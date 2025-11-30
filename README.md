@@ -5,6 +5,7 @@ my-cbm-project/
 │
 ├── backend/                     # Backend на Python (FastAPI / Flask / Django)
 │   |── main.py
+|   |── model.cbm
 │   ├── req.txt         # Зависимости Python
 │
 ├── frontend/                    # Frontend (React, JS, TS)
